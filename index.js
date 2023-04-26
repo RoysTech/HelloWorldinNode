@@ -1,13 +1,13 @@
-const http = require('http');
+var http = require('http');
 
-const port = process.env.PORT || 3000;
+var server = http.createServer(function(request, response) {
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.end("Hello World am trying to run on Azure");
+
 });
 
-server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+var port = 3000;
+server.listen(port);
+
+console.log("Server running at http://localhost:%d", port);
